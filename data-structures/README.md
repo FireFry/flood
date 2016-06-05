@@ -13,3 +13,5 @@ Data Structures
 1. ~~B-tree~~
 1. ~~Bimonial tree~~
 1. ~~Disjoint-set~~
+1. ~~Splay tree~~
+1. ~~Skip list~~
