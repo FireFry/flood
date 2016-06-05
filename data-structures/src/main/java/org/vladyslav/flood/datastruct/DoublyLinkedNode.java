@@ -38,33 +38,43 @@ public class DoublyLinkedNode<E> {
 
     public void attachPrevious(DoublyLinkedNode<E> other) {
         detachPrevious();
-        other.detachNext();
-        previous = other;
-        other.next = this;
+        if (other != null) {
+            other.detachNext();
+            previous = other;
+            other.next = this;
+        }
     }
 
     public void attachNext(DoublyLinkedNode<E> other) {
         detachNext();
-        other.detachPrevious();
-        next = other;
-        other.previous = this;
+        if (other != null) {
+            other.detachPrevious();
+            next = other;
+            other.previous = this;
+        }
     }
 
     public void insertPrevious(E value) {
         DoublyLinkedNode<E> newNode = new DoublyLinkedNode<>();
+        newNode.setValue(value);
         newNode.attachPrevious(previous);
         newNode.attachNext(this);
     }
 
     public void insertNext(E value) {
         DoublyLinkedNode<E> newNode = new DoublyLinkedNode<>();
+        newNode.setValue(value);
         newNode.attachNext(next);
         newNode.attachPrevious(this);
     }
 
     public void remove() {
-        previous.next = next;
-        next.previous = previous;
+        if (previous != null) {
+            previous.next = next;
+        }
+        if (next != null) {
+            next.previous = previous;
+        }
         previous = null;
         next = null;
     }

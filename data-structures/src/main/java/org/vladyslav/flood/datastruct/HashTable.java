@@ -8,19 +8,22 @@ public class HashTable<K, V> {
         table = new GenericArray<>(size);
     }
 
-    public void put(K key, V value) {
+    public V put(K key, V value) {
         DoublyLinkedNode<KeyValuePair<K, V>> node = getEntitiesList(key);
         while (node.getNext() != null && !node.getNext().getValue().getKey().equals(key)) {
             node = node.getNext();
         }
         KeyValuePair<K, V> keyValuePair;
+        V oldValue = null;
         if (node.getNext() != null) {
             keyValuePair = node.getNext().getValue();
+            oldValue = keyValuePair.getValue();
         } else {
             keyValuePair = new KeyValuePair<>(key);
             node.insertNext(keyValuePair);
         }
         keyValuePair.setValue(value);
+        return oldValue;
     }
 
     public V get(K key) {
@@ -49,7 +52,7 @@ public class HashTable<K, V> {
     }
 
     private DoublyLinkedNode<KeyValuePair<K, V>> getEntitiesList(K key) {
-        int tableIndex = key.hashCode() % table.size();
+        int tableIndex = Math.floorMod(key.hashCode(), table.size());
         DoublyLinkedNode<KeyValuePair<K, V>> result = table.get(tableIndex);
         if (result == null) {
             result = new DoublyLinkedNode<>();
