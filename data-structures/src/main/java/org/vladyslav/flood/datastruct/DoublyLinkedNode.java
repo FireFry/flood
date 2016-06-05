@@ -14,6 +14,14 @@ public class DoublyLinkedNode<E> {
         this.value = value;
     }
 
+    public DoublyLinkedNode<E> getPrevious() {
+        return previous;
+    }
+
+    public DoublyLinkedNode<E> getNext() {
+        return next;
+    }
+
     public void detachPrevious() {
         if (previous != null) {
             previous.next = null;
@@ -52,6 +60,13 @@ public class DoublyLinkedNode<E> {
         DoublyLinkedNode<E> newNode = new DoublyLinkedNode<>();
         newNode.attachNext(next);
         newNode.attachPrevious(this);
+    }
+
+    public void remove() {
+        previous.next = next;
+        next.previous = previous;
+        previous = null;
+        next = null;
     }
 
 }
