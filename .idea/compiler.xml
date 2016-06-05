@@ -22,11 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="flood" />
+        <module name="data-structures" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="flood" target="1.5" />
+      <module name="data-structures" target="1.8" />
+      <module name="flood" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
