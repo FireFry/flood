@@ -4,7 +4,7 @@ Data Structures
 1. Hash table
 1. Linked list
 1. Doubly linked list
-1. ~~Binary search tree~~
+1. Binary search tree
 1. ~~Red-black tree~~
 1. ~~Order-statistic tree~~
 1. ~~Segment tree~~
